@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity implements EventHandlers {
     public void onLoginClick(View view) {
         if (viewModel.isValidInputValue()) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            intent.putExtra("親からのデータ", viewModel.getEmail());
             startActivity(intent);
             finish();
         } else {
