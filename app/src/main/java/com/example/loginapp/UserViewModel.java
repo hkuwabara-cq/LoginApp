@@ -9,6 +9,7 @@ public class UserViewModel extends BaseObservable {
     private String email;
     private String password;
     private String clickText = "";
+    private LoginView view;
 
     @Bindable public String getEmail() {
         return email;
@@ -35,17 +36,23 @@ public class UserViewModel extends BaseObservable {
         notifyPropertyChanged(BR.buttonEnable);
     }
 
+    public void setView(LoginView view) {
+        this.view = view;
+    }
+
     // フォーム（EditText）へのテキスト入力有無で、ボタン活性・非活性を制御するフラグの getter
     @Bindable public boolean isButtonEnable() {
         // 入力あり:true  入力なし：false
         return !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password);
     }
 
-    public boolean isValidInputValue() {
+    public void validateLogin() {
         if (email.length() >= 6 && password.length() >= 6) {
-            return true;
+            view.moveToMainView();
+        } else {
+            clickText = "6文字以上入力してください";
+            notifyPropertyChanged(BR.clickText);
         }
-        return false;
     }
 
 }
