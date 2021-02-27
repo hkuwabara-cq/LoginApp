@@ -1,24 +1,18 @@
 package com.example.loginapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.example.loginapp.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity implements EventHandlers {
 
     ActivityLoginBinding binding;
-    User viewModel;
+    UserViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +23,12 @@ public class LoginActivity extends AppCompatActivity implements EventHandlers {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
         // xmlのuserにLoginActivityのUserViewModelを紐付ける
-        viewModel = new User();
-        binding.setUser(viewModel);
+        viewModel = new UserViewModel();
+        binding.setViewModel(viewModel);
 
         // xmlのhandlersにLoginActivityのonLoginClick()を紐付ける
         binding.setHandlers(this);
     }
-
     // buttonをクリックしたときのイベント処理
     @Override
     public void onLoginClick(View view) {

@@ -3,8 +3,8 @@
 
     <data>
         <variable
-            name="user"
-            type="com.example.loginapp.User" />
+            name="viewModel"
+            type="com.example.loginapp.UserViewModel" />
         <variable
             name="handlers"
             type="com.example.loginapp.EventHandlers" />
@@ -19,7 +19,7 @@
             android:id="@+id/clickText"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:text="@{user.clickText}" />
+            android:text="@{viewModel.clickText}" />
 
 
         <EditText
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:inputType="textEmailAddress"
-            android:text="@={user.email}"
+            android:text="@={viewModel.email}"
          />
 
         <EditText
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:text="@={user.password}"
+            android:text="@={viewModel.password}"
            />
 
         <Button
@@ -45,7 +45,7 @@
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:text="ログイン"
-            android:enabled="@{user.buttonEnable}"
+            android:enabled="@{viewModel.buttonEnable}"
             android:onClick="@{handlers.onLoginClick}"/>
 
     </LinearLayout>
